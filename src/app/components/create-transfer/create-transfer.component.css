@@ -1,0 +1,126 @@
+/* div {
+    border: red 1px solid;
+} */
+.container{
+    justify-content: space-between;
+    width: 80vw;
+    margin: 30px auto;
+}
+input , select{
+    border:rgb(24, 23, 23) 1px solid;
+    border-radius: 5px;
+    height: 30px;  
+    padding: 4px;
+    box-sizing: border-box;
+    text-align: center;
+    font-size: 17px;
+}
+
+.d-flex {
+    display: flex;
+}
+.card {
+    width: 430px;
+    height: 200px;
+    padding: 10px;
+    border: rgb(24, 23, 23) 1px solid;
+    border-radius: 10px;
+}
+
+
+ /* Первая карта */
+.card-top {
+    width: 100%;
+}
+.card-top div {
+    justify-content: space-between; 
+}
+.card-top input {
+    width: 21%;
+}
+
+.card-bottom {
+    margin-top:10px;
+    height: 70px;
+}
+
+.card-bottom div:first-child{
+    flex: 3;
+}
+.card-bottom div:first-child input {
+    width: 90%;
+}
+
+.card-bottom div:last-child{
+    flex: 2;
+}
+.card-bottom div:last-child input{
+    width: 45%;
+
+}
+.f-right {
+    float: right;
+}
+
+
+/* Вторая карта, с некоторыми свойствами из первой карты */
+.card:nth-child(2) div{
+    width: 100%;
+    justify-content: space-between;
+    margin-top: 40px;
+}
+.card:nth-child(2) div input{
+    width: 21%;
+}
+
+
+/* Нижние две кнопки */
+footer {
+    justify-content: space-between;
+    margin: 100px auto 0;
+    width: 400px; 
+}
+footer input,
+footer button{
+    height: 50px;
+    border: 1px solid rgb(24, 23, 23);
+    border-radius: 5px;
+    font-size: 18px;
+    width: 150px;
+}
+/* Валидация форм */
+input.ng-invalid.ng-touched {
+    border:1px solid red;  
+}
+input.ng-valid.ng-touched {
+    border:1px solid green;  
+}
+.error {
+    color: red;
+    font-size: 12px;
+}
+.errorBlock{
+    position: relative; 
+    top: 50px;
+    right: 150px;
+    width: 200px; 
+}
+
+@media screen and (max-width: 1200px){
+    .container{
+        width: 90vw;
+    }
+}
+@media screen and (max-width: 1020px){
+    .container{ 
+        width: 97vw;
+    }
+}
+@media screen and (max-width: 762px){
+    .container {
+        flex-direction: column;
+    }
+    .card {
+       margin:30px auto;
+    } 
+} 

@@ -1,0 +1,64 @@
+<form [formGroup]="cardForm" (ngSubmit)="service.sendForm(cardForm)">
+  <div class="container d-flex">
+    <div class="card">
+      <h2>Карта плательщика</h2>
+      <div class="card-top">
+        <span>Номер:</span><br>
+        <div formGroupName="sendCardNumbers" class="d-flex">
+          <input (keypress)="changeFocus($event.target)" formControlName="first"  type="text" maxlength="4" pattern="[0-9]{4}">
+          <input (keypress)="changeFocus($event.target)" formControlName="second" type="text" maxlength="4" pattern="[0-9]{4}">
+          <input (keypress)="changeFocus($event.target)"formControlName="third"  type="text" maxlength="4" pattern="[0-9]{4}">
+          <input formControlName="fourth" type="text" maxlength="4" pattern="[0-9]{4}">
+        </div> 
+      </div>
+      <div class="card-bottom d-flex">
+        <div>
+          <span>ФИО держателя</span>
+          <input formControlName="ownerFullName" patter="^[a-zA-Z]+$" type="text" >
+          <div *ngIf="cardForm.controls['ownerFullName'].invalid && (cardForm.controls['ownerFullName'].dirty || cardForm.controls['ownerFullName'].touched)" >
+            <span *ngIf="cardForm.controls['ownerFullName'].errors.required" class="error">
+              Это поле обязательно
+            </span>
+             <span *ngIf="cardForm.controls['ownerFullName'].errors.pattern" class="error">Это поле должно содержать Имя Фамилию и Отчество через пробел и минимум по два символа</span>
+          </div>
+        </div> 
+        <div formGroupName="activeUntill">
+          <span>активна до:</span><br>
+          <select formControlName="mounth" type="text"> 
+            <option value="" disabled><small>Мес</small></option>
+            <option  *ngFor="let mounth of [1,2,3,4,5,6,7,8,9,10,11,12]" [value]="mounth">{{mounth}}</option>
+          </select>
+          <select formControlName="year" class="f-right" type="text" >
+            <option value="" disabled><small>Год</small></option>
+            <option *ngFor="let year of [19,20,21,22,23,24,25,26]" [value]="year">{{year}}</option>
+          </select>
+        </div>
+      </div> 
+    </div>
+    <div class="card">
+      <h2>Карта получателя</h2>
+      <div formGroupName="recipientCardNumbers" class="d-flex">
+        <input (keypress)="changeFocus($event.target)" formControlName="first"  type="text" maxlength="4" pattern="[0-9]{4}"> 
+        <input (keypress)="changeFocus($event.target)" formControlName="second" type="text" maxlength="4" pattern="[0-9]{4}">
+        <input (keypress)="changeFocus($event.target)" formControlName="third"  type="text" maxlength="4" pattern="[0-9]{4}">
+        <input formControlName="fourth" type="text" maxlength="4" pattern="[0-9]{4}">
+      </div>
+    </div>
+  </div>
+  <footer class="d-flex">
+    <input formControlName="sum" type="text" placeholder="Сумма" pattern='^[0-9]+$'>
+     
+    <div class="errorBlock" *ngIf="cardForm.controls.sum.invalid && (cardForm.controls.sum.dirty || cardForm.controls.sum.touched)" >
+      <span *ngIf="cardForm.controls.sum.errors.required" class="error">
+        Это поле обязательно
+      </span>
+      <span *ngIf="cardForm.controls.sum.errors.min || cardForm.controls.sum.errors.max" class="error">
+        Сумма должна быть от 100 до 100000
+      </span>
+      <span *ngIf="cardForm.controls.sum.errors.pattern" class="error">
+          Только цифры
+      </span>
+    </div>
+    <button type="submit" [disabled]="!cardForm.valid">Перевести</button>
+  </footer> 
+</form>

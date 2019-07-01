@@ -1,0 +1,17 @@
+.container {
+    width: 80vw ;
+    margin: auto;
+}
+a {
+    display: inline-block;
+    text-decoration: none;
+    color:rgb(24, 23, 23);
+    border: solid 1px rgb(24, 23, 23);
+    padding: 15px;
+    margin-right: 15px;
+}
+hr {
+    width: 97vw;
+    margin-top: -2px;
+    border: 1px solid rgb(24, 23, 23);
+}

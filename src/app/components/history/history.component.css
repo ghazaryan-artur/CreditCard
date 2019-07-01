@@ -1,0 +1,39 @@
+.container {
+    width: 90vw;
+    margin: 50px auto;
+}
+table {
+    border-collapse: collapse;
+    width: 100%;
+    text-align: center;
+  
+}
+
+td, th {
+    border: solid rgb(22, 19, 19) 1px;
+    height: 35px;
+}
+td:last-child{
+    display: flex;
+    justify-content: space-around;
+}
+button {
+    border:rgb(24, 23, 23) 1px solid;
+    border-radius: 5px;
+    height: 30px;  
+    padding: 4px;
+    box-sizing: border-box;
+}
+button:first-child{
+    background-color: rgb(48, 228, 48); 
+}
+button:last-child{
+    background-color: rgb(253, 30, 30);
+}
+
+
+@media screen and (max-width:762px){
+    .container {
+        width: 100vw;
+    }
+}

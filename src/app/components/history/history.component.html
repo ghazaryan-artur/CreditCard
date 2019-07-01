@@ -1,0 +1,28 @@
+<div class="container">
+  <table>
+    <thead>
+      <tr class="">
+        <th>№</th>
+        <th>Карта плательщика</th>
+        <th>Карта получателя</th>
+        <th>Сумма</th>
+        <th>Дата выполнения</th>
+        <th>Действие</th>
+      </tr>  
+    </thead>
+    <tbody>
+      <tr *ngFor='let item of history, let i = index'>
+        <td>{{i + 1}}</td> 
+        <td>{{item.sendCardNumbers.first}} **** **** {{item.sendCardNumbers.fourth}}</td>
+        <td>{{item.recipientCardNumbers.first}} **** **** {{item.recipientCardNumbers.fourth}}</td>
+        <td>{{item.sum}}</td>
+        <td>{{item.date}}</td>
+        <td>
+          <button (click)="service.remake(i)">Повторить</button>
+          <button (click)="service.deleteTrans(i)">Удалить</button>
+        </td>
+      </tr>
+      <tr></tr>
+    </tbody>
+  </table>
+</div>
