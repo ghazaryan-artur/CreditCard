@@ -1,4 +1,4 @@
-import { Component, DoCheck } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 
 @Component({
@@ -6,24 +6,12 @@ import { Component, DoCheck } from '@angular/core';
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.css']
 })
-export class MainComponent implements DoCheck {
+export class MainComponent implements OnInit {
 
   constructor() { }
 
-  ngDoCheck() {
-    this.bottomBorder();
-  }
-  
+  ngOnInit(){ }
 
-  bottomBorder():void{
-    if (window.location.pathname === '/history'){
-      document.getElementsByTagName('a')[1].style.borderBottom = '2px solid white';
-      document.getElementsByTagName('a')[0].removeAttribute('style');
-    } else {
-      document.getElementsByTagName('a')[0].style.borderBottom = '2px solid white';
-      document.getElementsByTagName('a')[1].removeAttribute('style');
-    }
-  }
   
 } 
  
