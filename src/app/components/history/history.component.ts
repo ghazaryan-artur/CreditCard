@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { MainService } from 'src/app/services/main.service';
 import { Subscription } from 'rxjs';
 
@@ -7,7 +7,8 @@ import { Subscription } from 'rxjs';
   templateUrl: './history.component.html',
   styleUrls: ['./history.component.css']
 })
-export class HistoryComponent implements OnInit {
+export class HistoryComponent implements OnInit,
+                                         OnDestroy {
   public history:Array<Object>;
   public historyChange:Subscription;
 
@@ -19,6 +20,12 @@ export class HistoryComponent implements OnInit {
     this.historyChange = this.service.historyChange.subscribe(() => { //подписка на изменения в historyChange в сервисе
       this.history = JSON.parse(localStorage.getItem('history'));
     });
+  }
+  ngOnDestroy(){
+    if (this.historyChange) {
+      this.historyChange.unsubscribe();
+      this.historyChange = null;
+    }
   }
  
 

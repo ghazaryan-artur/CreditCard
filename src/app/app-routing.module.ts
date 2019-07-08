@@ -5,10 +5,9 @@ import { HistoryComponent         } from './components/history/history.component
 import { CreateTransferComponent  } from './components/create-transfer/create-transfer.component';
 
 const routes: Routes = [
-  { path: '',         component: CreateTransferComponent },
   { path: 'create',   component: CreateTransferComponent },
   { path: 'history',  component: HistoryComponent },
-  { path: '**',       component: CreateTransferComponent }
+  { path: '**',  redirectTo: 'create', pathMatch: 'full'  }
 ];
 
 @NgModule({

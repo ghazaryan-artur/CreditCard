@@ -18,7 +18,7 @@
         <td>{{item.sum}}</td>
         <td>{{item.date}}</td>
         <td>
-          <button (click)="service.remake(i)">Повторить</button>
+          <button routerLink="/create" (click)="service.remake(i)">Повторить</button>
           <button (click)="service.deleteTrans(i)">Удалить</button>
         </td>
       </tr>
